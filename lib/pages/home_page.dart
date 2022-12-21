@@ -45,7 +45,6 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: height(context) * 0.28,
             child: PageView.builder(
-
               itemCount: 4,
               scrollDirection: Axis.horizontal,
               onPageChanged: (index){

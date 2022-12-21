@@ -7,7 +7,7 @@ class Categories{
   Categories(this.id, this.name, this.urlImage);
 }
 
-List<Categories> category = [
+final category = [
   Categories(1, 'Nutritional Drinks', 'assets/m1.png'),
   Categories(2, 'Diabetes Care', 'assets/m8.png'),
   Categories(3, 'Ayurveda', 'assets/m3.png'),

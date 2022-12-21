@@ -14,35 +14,13 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  String searchString = '';
-  List searchFilter = [];
   TextEditingController editingController = TextEditingController();
-  List<Categories> _foundCates = [];
-  List? searchList;
+
+  List<Categories> categories = category;
+
   @override
   initState() {
-    _foundCates = category;
-    searchList = category
-        .where((cate) =>
-        cate.name.toLowerCase().contains(searchString.toLowerCase()))
-        .toList();
     super.initState();
-  }
-
-  // This function is called whenever the text field changes
-  void _runFilter(String enteredKeyword) {
-    List<Categories> results = [];
-    if (enteredKeyword.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
-      results = category;
-    } else {
-      results = category
-          .where((cate) =>
-          cate.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
-          .toList();
-      // we use the toLowerCase() method to make it case-insensitive
-    }
-
   }
 
   @override
@@ -92,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                         child: SizedBox(
                           width: width(context) * 0.70,
                           height: 20,
-                          child: TextFormField(
+                          child: TextField(
                             controller: editingController,
                             decoration: InputDecoration(
                               hintText: 'search a category',
@@ -105,9 +83,7 @@ class _SearchPageState extends State<SearchPage> {
                               contentPadding: const EdgeInsets.only(
                                   left: 15, bottom: 11, top: 11, right: 15),
                             ),
-                            onChanged: (value) {
-                              searchString = value;
-                            }
+                            onChanged: searchCate,
                           ),
                         ),
                       ),
@@ -131,15 +107,25 @@ class _SearchPageState extends State<SearchPage> {
                               childAspectRatio: 2 / 3,
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 10),
-                      itemCount: 6,
+                      itemCount: categories.length,
                       itemBuilder: (BuildContext context, index) {
+                        final cate = categories[index];
                        // category[index].name.toUpperCase().contains(editingController.text.toUpperCase()) || category[index].name.contains(editingController.text)?  searchFilter.add(category[index]) : searchFilter.clear();
-                        return buildProductsView(context, searchList?[index]);
+                        return buildProductsView(context, cate);
                       })),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void searchCate(String value) {
+    final suggestions = category.where((cate) {
+      final cateTitle = cate.name.toLowerCase();
+      final input = value.toLowerCase();
+      return cateTitle.contains(input);
+    }).toList();
+    setState(() => categories = suggestions);
   }
 }
