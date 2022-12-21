@@ -84,33 +84,33 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage("assets/bottompic.png"),
+              AssetImage("assets/home.png"),
             ),
-            label: 'Home',
+            label: 'HOME',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage("assets/bottompic.png"),
+              AssetImage("assets/box.png"),
             ),
-            label: 'Categories',
+            label: 'ORDERS',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage("assets/bottompic.png"),
+              AssetImage("assets/lap.png"),
             ),
-            label: 'Articles',
+            label: 'LAP TEST',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage("assets/bottompic.png"),
+              AssetImage("assets/%.png"),
             ),
-            label: 'Articles',
+            label: 'OFFERS',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage("assets/bottompic.png"),
+              AssetImage("assets/profile.png"),
             ),
-            label: 'Articles',
+            label: 'PROFILE',
           ),
 
         ],
