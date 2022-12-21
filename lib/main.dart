@@ -74,6 +74,7 @@ class _MainState extends State<Main> {
         child: _widgetOptions.elementAt(_selectedScreenIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         unselectedLabelStyle: TextStyle(color: customBlack),
