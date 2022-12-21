@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:task_flutter/pages/home_page.dart';
+import 'package:task_flutter/utiles/colors.dart';
+import 'package:task_flutter/utiles/text_styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,27 +19,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const Main(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Main extends StatefulWidget {
+  const Main({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Main> createState() => _MainState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MainState extends State<Main> {
 
   int _selectedScreenIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('d'),
-    Text('d'),
-    Text('d'),
-    Text('d'),
-    Text('d'),
+    HomePage(),
+    Text('ORDER'),
+    Text('LAP TEST'),
+    Text('OFFERS'),
+    Text('PROFILE'),
   ];
 
   void _selectScreen(int index) {
@@ -52,15 +55,15 @@ class _HomePageState extends State<HomePage> {
     var appBar = AppBar(
       backgroundColor: Colors.grey[50],
       elevation: 0,
-      title: const Text('MainPage', style: TextStyle(fontSize: 21, color: Colors.black),),
+      title: Text('MEDICINE', style: boldTitleStyle,),
       leading: IconButton(
         onPressed: () {},
-        icon: Image.asset('assets/bottompic.png', color: Colors.black,),
+        icon: Image.asset('assets/upperprofile.png', color: Colors.black,),
       ),
       actions: [
         IconButton(
           onPressed: () {},
-          icon: Image.asset('assets/bottompic.png', color: Colors.black,),
+          icon: Image.asset('assets/cart.png', color: Colors.black,),
         ),
       ],
     );
@@ -73,10 +76,10 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        unselectedLabelStyle: TextStyle(color: Colors.grey[900]),
-        selectedLabelStyle: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        unselectedItemColor: Colors.grey[900],
-        selectedItemColor: Colors.black,
+        unselectedLabelStyle: TextStyle(color: customBlack),
+        selectedLabelStyle: TextStyle(color: customBlack, fontWeight: FontWeight.bold),
+        unselectedItemColor:customGrey,
+        selectedItemColor: customBlack,
 
         currentIndex: _selectedScreenIndex,
         onTap: _selectScreen,
