@@ -38,9 +38,33 @@ class _SearchPageState extends State<SearchPage> {
       actions: [
         IconButton(
           onPressed: () {},
-          icon: Image.asset(
-            'assets/cart.png',
-            color: Colors.black,
+          icon: Stack(
+              children: [
+                Image.asset('assets/cart.png', color: Colors.black,),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    padding: const EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+
+                    constraints: const BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: const Text(
+                      '2',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )
+              ]
           ),
         ),
       ],
