@@ -1,30 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:task_flutter/models/catgories_models.dart';
+import 'package:provider/provider.dart';
+import 'package:task_flutter/controllers/controller.dart';
+import 'package:task_flutter/models/category_models.dart';
 
 import '../utiles/colors.dart';
 import '../utiles/media_query.dart';
 import '../utiles/text_styles.dart';
 import '../widgets/build_categories_view.dart';
 
-class SearchPage extends StatefulWidget {
+
+class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
 
   @override
-  State<SearchPage> createState() => _SearchPageState();
-}
-
-class _SearchPageState extends State<SearchPage> {
-  TextEditingController editingController = TextEditingController();
-
-  List<Categories> categories = category;
-
-  @override
-  initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<Search>(context);
     var appBar = AppBar(
       backgroundColor: Colors.grey[50],
       elevation: 0,
@@ -95,7 +85,7 @@ class _SearchPageState extends State<SearchPage> {
                           width: width(context) * 0.70,
                           height: 20,
                           child: TextField(
-                            controller: editingController,
+                            controller: provider.editingController,
                             decoration: InputDecoration(
                               hintText: 'search a category',
                               hintStyle: hintGreyStyle,
@@ -107,7 +97,7 @@ class _SearchPageState extends State<SearchPage> {
                               contentPadding: const EdgeInsets.only(
                                   left: 15, bottom: 11, top: 11, right: 15),
                             ),
-                            onChanged: searchCate,
+                            onChanged: provider.searchCate,
                           ),
                         ),
                       ),
@@ -126,15 +116,15 @@ class _SearchPageState extends State<SearchPage> {
                   child: GridView.builder(
                       shrinkWrap: true,
                       gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              childAspectRatio: 2 / 3,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10),
-                      itemCount: categories.length,
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 2 / 3,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10),
+                      itemCount: provider.categories.length,
                       itemBuilder: (BuildContext context, index) {
-                        final cate = categories[index];
-                       // category[index].name.toUpperCase().contains(editingController.text.toUpperCase()) || category[index].name.contains(editingController.text)?  searchFilter.add(category[index]) : searchFilter.clear();
+                        final cate = provider.categories[index];
+                        // category[index].name.toUpperCase().contains(editingController.text.toUpperCase()) || category[index].name.contains(editingController.text)?  searchFilter.add(category[index]) : searchFilter.clear();
                         return buildProductsView(context, cate);
                       })),
             ),
@@ -142,14 +132,5 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
     );
-  }
-
-  void searchCate(String value) {
-    final suggestions = category.where((cate) {
-      final cateTitle = cate.name.toLowerCase();
-      final input = value.toLowerCase();
-      return cateTitle.contains(input);
-    }).toList();
-    setState(() => categories = suggestions);
   }
 }

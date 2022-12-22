@@ -1,10 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:task_flutter/pages/home_page.dart';
 import 'package:task_flutter/utiles/colors.dart';
 import 'package:task_flutter/utiles/text_styles.dart';
+import 'package:provider/provider.dart';
+import 'controllers/controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Search()),
+      ],
+      child: const MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
