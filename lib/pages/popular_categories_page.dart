@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_flutter/models/catgories_models.dart';
+import 'package:task_flutter/models/category_models.dart';
 import 'package:task_flutter/utiles/colors.dart';
 
 import '../utiles/text_styles.dart';

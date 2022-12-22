@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/catgories_models.dart';
+import '../models/category_models.dart';
 import 'build_categories_view.dart';
 
 
