@@ -5,7 +5,6 @@ import 'package:task_flutter/utiles/navigator.dart';
 
 import '../utiles/media_query.dart';
 import '../widgets/adbar.dart';
-import '../widgets/adscrollbar.dart';
 import '../widgets/categories.dart';
 import '../widgets/searchbar.dart';
 import '../widgets/seeall.dart';
@@ -37,7 +36,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   adScrollBar(){
-
     return SizedBox(
       height: height(context) * 0.315,
       child: Column(
