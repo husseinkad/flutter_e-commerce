@@ -41,7 +41,7 @@ adBar(context){
                         color: darkPurple,
                         borderRadius: const BorderRadius.all(Radius.circular(12)),
                       ),
-                      child: const Center(child: Text('ORDER NOW', style: TextStyle(color: Colors.white, fontFamily: 'bev', fontSize: 12),)), ),
+                      child: const Center(child: Text('ORDER NOW', style: TextStyle(color: Colors.white, fontFamily: 'bev', fontSize: 10),)), ),
                   )
                 ],
               )
