@@ -5,13 +5,15 @@ import 'package:task_flutter/pages/home_page.dart';
 import 'package:task_flutter/utiles/colors.dart';
 import 'package:task_flutter/utiles/text_styles.dart';
 import 'package:provider/provider.dart';
-import 'controllers/controller.dart';
+import 'controllers/index_controller.dart';
+import 'controllers/search_controller.dart';
 
 void main() {
   runApp(
       MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Search()),
+        ChangeNotifierProvider(create: (_) => Index()),
       ],
       child: const MyApp())
   );
