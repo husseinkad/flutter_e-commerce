@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task_flutter/controllers/controller.dart';
+import 'package:task_flutter/controllers/search_controller.dart';
 import 'package:task_flutter/models/category_models.dart';
 
 import '../utiles/colors.dart';
